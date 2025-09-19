@@ -33,8 +33,13 @@ const Game = ()=>{
 
   const onResponse = (correct: boolean)=>{
     markQuestion(step, correct)
-    if(!correct) setErrors(errors+1)
-    setStep(step+1)
+    if(correct){
+      setStep(step+1)
+    }
+    else{
+      setErrors(errors+1)
+    }
+      
   }
 
   const onStart = ()=>{

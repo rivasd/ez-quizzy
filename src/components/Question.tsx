@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import {type GameQuestion} from '../state/models'
-import { Button, Card, TextInput, Title } from '@mantine/core'
+import { Button, Card, Center, TextInput, Title } from '@mantine/core'
 
 
 interface QuestionProps {
@@ -13,31 +13,34 @@ const Question = ({question, onResponse}: QuestionProps) => {
   const reponseRef = useRef<HTMLInputElement>(null)
   const onSubmit = (e: React.FormEvent)=>{
     e.preventDefault()
+    if(reponseRef.current) reponseRef.current.value = ""
     onResponse((reponseRef.current?.value.toLowerCase())===question.response.toLowerCase())
   }
 
   return (
-    <Card>
-      <Card.Section>
+    <Card shadow='sm' padding="lg" withBorder radius="md">
+      
         <Title
           order={2}
         >
           {question.question}
         </Title>
-      </Card.Section>
-      <Card.Section>
+      
+      
         <form onSubmit={onSubmit}>
           <TextInput
             label="Réponse: "
             ref={reponseRef}
           />
-          <Button 
-            type='submit'
-          >
-            Soumettre
-          </Button>
+          <Center mt="lg">
+            <Button 
+              type='submit'
+              >
+              Soumettre
+            </Button>
+          </Center>
         </form>
-      </Card.Section>
+      
     </Card>
   )
 }

@@ -11,7 +11,7 @@ function App() {
       padding={"md"}
       >
 
-        <AppShell.Header>
+        <AppShell.Header px="xl">
           <Group>
           <Title>
             EZ-Quizzy
